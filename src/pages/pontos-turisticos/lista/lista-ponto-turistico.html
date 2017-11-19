@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Pontos Turisticos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card (click)="detalhesPontoTuristico(pt)" *ngFor="let pt of lista | async">
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/img/ponto-turistico/estrada1.jpg"/>
+            </ion-avatar>
+            <h2><b>{{pt.nome}}</b></h2>
+          </ion-item>
+        <ion-card-content>
+          <p>
+            {{pt.detalhes}}
+          </p>
+          <p><b>Horários: </b>{{pt.horarioInicio}} até {{pt.horarioFim}} </p>
+          <p><b>Dias da Semana: </b>|<span *ngFor="let diaSemana of pt.diasSemana"> {{diasSemanaArray[diaSemana]}} |</span></p>
+        </ion-card-content>
+      </ion-card>
+  <ion-fab right bottom>
+      <button ion-fab color="danger" (click)="adicionarItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+</ion-content>

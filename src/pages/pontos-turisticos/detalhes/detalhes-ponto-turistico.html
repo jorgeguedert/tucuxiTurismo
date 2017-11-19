@@ -1,0 +1,86 @@
+<!--
+  Generated template for the DetalhesPontoTuristicoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{pontoTuristico.nome}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div padding>
+  <ion-segment [(ngModel)]="tabValue" (ngModelChange)="slideChanged">
+    <ion-segment-button value="detalhes">
+      Detalhes
+    </ion-segment-button>
+    <ion-segment-button value="fotos">
+      Fotos
+    </ion-segment-button>
+  </ion-segment>
+  </div>
+  <div [ngSwitch]="tabValue" style="width: 100%; height: 100%">
+    <div *ngSwitchCase="'detalhes'" style="width: 100%; height: 100%">
+      <div id="map" #map style="width:100%;height:30%"></div>
+      <ion-card>
+        <ion-card-header>
+          Detalhes
+        </ion-card-header>
+        <ion-card-content>
+          <b>Horário: </b>{{pontoTuristico.horarioInicio}} até {{pontoTuristico.horarioFim}}
+          <br/>
+          <b>Dias da Semana: </b>|<span *ngFor="let diaSemana of pontoTuristico.diasSemana"> {{diasSemanaArray[diaSemana]}} |</span>
+          <br/>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          {{pontoTuristico.detalhes}}
+          <br/>
+          <rating [(ngModel)]="pontoTuristico.mediaAvaliacao" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+            starIconName="star" nullable="false">
+          </rating>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          Sua Avaliação
+        </ion-card-header>
+        <ion-card-content>
+          <rating [(ngModel)]="avaliacaoUsuario" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+            starIconName="star" nullable="false" (ngModelChange)="confirmRating($event)"> >
+          </rating>
+        </ion-card-content>
+      </ion-card>
+      <ion-list>
+        <ion-item>
+          <ion-textarea type="text" [(ngModel)]="comentarioUsuario" placeholder="Digite aqui seu comentário..."></ion-textarea>
+          <button ion-button item-end (click)="sendComment()">Enviar</button>
+        </ion-item>
+        <ion-item *ngFor="let comentario of pontoTuristico.comentarios">
+          <h2>
+            <b>{{comentario.usuarioNome}}</b>
+          </h2>
+          <p>{{comentario.mensagem}}</p>
+          <ion-note item-end class="note note-ios left">{{comentario.data | date:'dd/MM/yyyy HH:mm:ss'}}</ion-note>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngSwitchCase="'fotos'">
+      <ion-slides #slider (ionSlideDidChange)="slideChanged()">
+        <ion-slide>
+          <img src="assets/img/ponto-turistico/estrada1.jpg" style="width: 100%; height: 70%" />
+        </ion-slide>
+        <ion-slide>
+          <img src="assets/img/ponto-turistico/estrada2.jpg" style="width: 100%; height: 70%" />
+        </ion-slide>
+        <ion-slide>
+          <img src="assets/img/ponto-turistico/estrada3.jpg" style="width: 100%; height: 70%" />
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>

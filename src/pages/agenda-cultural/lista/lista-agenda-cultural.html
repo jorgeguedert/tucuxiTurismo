@@ -1,0 +1,30 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Agenda Cultural</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card (click)="detalhesAgendaCultural(ac)" *ngFor="let ac of lista | async">
+    <ion-card-content>
+      <ion-card-title>
+        {{ac.nome}}
+      </ion-card-title>
+      <p>
+        {{ac.detalhes}}
+      </p>
+      <p><b>Dias: </b>{{ac.dataInicio}} até {{ac.dataFim}}</p>
+      <p><b>Horários: </b>{{ac.horarioInicio}} até {{ac.horarioFim}} </p>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="adicionarItem()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

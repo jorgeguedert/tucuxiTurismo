@@ -1,0 +1,87 @@
+<!--
+  Generated template for the DetalhesPontoTuristicoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{agendaCultural.nome}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div padding>
+    <ion-segment [(ngModel)]="tabValue" (ngModelChange)="slideChanged">
+      <ion-segment-button value="detalhes">
+        Detalhes
+      </ion-segment-button>
+      <ion-segment-button value="fotos">
+        Fotos
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="tabValue" style="width: 100%; height: 100%">
+    <div *ngSwitchCase="'detalhes'" style="width: 100%; height: 100%">
+      <div id="map" #map style="width:100%;height:30%"></div>
+      <ion-card>
+        <ion-card-header>
+          Detalhes
+        </ion-card-header>
+        <ion-card-content>
+          <b>Data: </b>{{agendaCultural.dataInicio}} até {{agendaCultural.dataFim}}
+          <br/>
+          <b>Horário: </b>{{agendaCultural.horarioInicio}} até {{agendaCultural.horarioFim}}
+          <br/>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          {{agendaCultural.detalhes}}
+          <br/>
+          <rating [(ngModel)]="agendaCultural.mediaAvaliacao" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+            starIconName="star" nullable="false">
+          </rating>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          Sua Avaliação
+        </ion-card-header>
+        <ion-card-content>
+          <rating [(ngModel)]="avaliacaoUsuario" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+            starIconName="star" nullable="false" (ngModelChange)="confirmRating($event)"> >
+          </rating>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+      <ion-list>
+        <ion-item>
+          <ion-textarea type="text" [(ngModel)]="comentarioUsuario" placeholder="Digite aqui seu comentário..."></ion-textarea>
+          <button ion-button item-end (click)="sendComment()">Enviar</button>
+        </ion-item>
+        <ion-item *ngFor="let comentario of agendaCultural.comentarios">
+          <h2>
+            <b>{{comentario.usuarioNome}}</b>
+          </h2>
+          <p>{{comentario.mensagem}}</p>
+          <ion-note item-end class="note note-ios left">{{comentario.data | date:'dd/MM/yyyy HH:mm:ss'}}</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    </div>
+    <div *ngSwitchCase="'fotos'">
+        <ion-slides #slider (ionSlideDidChange)="slideChanged()">
+            <ion-slide>
+              <img src="assets/img/agenda-cultural/teatro-interior.jpg" style="width: 100%; height: 70%"/>
+            </ion-slide>
+            <ion-slide>
+              <img src="assets/img/agenda-cultural/teatro.jpg" style="width: 100%; height: 70%" />
+            </ion-slide>
+            <ion-slide>
+              <img src="assets/img/agenda-cultural/teatro-interior-2.jpg" style="width: 100%; height: 70%"/>
+            </ion-slide>
+          </ion-slides>
+    </div>
+  </div>
+</ion-content>

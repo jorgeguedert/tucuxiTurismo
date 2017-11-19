@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastrar Agenda Cultural</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="tabValue" (ngModelChange)="slideChanged">
+    <ion-segment-button value="detalhes">
+      Detalhes
+    </ion-segment-button>
+    <ion-segment-button value="fotos">
+      Fotos
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="tabValue" style="width: 100%; height: 100%">
+    <div *ngSwitchCase="'detalhes'" style="width: 100%; height: 100%">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Nome</ion-label>
+          <ion-input type="text" [(ngModel)]="agendaCultural.nome"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Endereço</ion-label>
+          <ion-input type="text" [(ngModel)]="agendaCultural.endereco"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>UF</ion-label>
+          <ion-input type="text" [(ngModel)]="agendaCultural.uf"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Cidade</ion-label>
+          <ion-input type="text" [(ngModel)]="agendaCultural.cidade"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Data Início</ion-label>
+          <ion-input type="date" [(ngModel)]="agendaCultural.dataInicio"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Data Fim</ion-label>
+          <ion-input type="date" [(ngModel)]="agendaCultural.dataFim"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Horário Início</ion-label>
+          <ion-input type="text" [(ngModel)]="agendaCultural.horarioInicio"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Horário Fim</ion-label>
+          <ion-input type="text" [(ngModel)]="agendaCultural.horarioFim"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Dias da Semana</ion-label>
+          <ion-select multiple="true" [(ngModel)]="agendaCultural.diasSemana">
+            <ion-option value="0">Domingo</ion-option>
+            <ion-option value="1">Segunda-Feira</ion-option>
+            <ion-option value="2">Terça-Feira</ion-option>
+            <ion-option value="3">Quarta-Feira</ion-option>
+            <ion-option value="4">Quinta-Feira</ion-option>
+            <ion-option value="5">Sexta-Feira</ion-option>
+            <ion-option value="6">Sábado</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Valor</ion-label>
+          <ion-input type="text" [(ngModel)]="agendaCultural.valor"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Detalhes</ion-label>
+          <ion-textarea [(ngModel)]="agendaCultural.detalhes"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <button ion-button block (click)="selectImages()">Selecionar Imagens</button>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngSwitchCase="'fotos'">
+      <ion-slides #slider (ionSlideDidChange)="slideChanged()">
+        <ion-slide>
+          <img src="assets/img/agenda-cultural/teatro.jpg" style="width: 100%; height: 70%" />
+        </ion-slide>
+        <ion-slide>
+          <img src="assets/img/agenda-cultural/teatro-interior.jpg" style="width: 100%; height: 70%" />
+        </ion-slide>
+        <ion-slide>
+          <img src="assets/img/agenda-cultural/teatro-interior-2.jpg" style="width: 100%; height: 70%" />
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+  <button ion-button block secondary (click)="cadastrar()">Cadastrar</button>
+</ion-content>

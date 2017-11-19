@@ -1,0 +1,169 @@
+/*
+  Vertical Timeline CSS
+  By Gayan Pathirana
+  Email: gayanpa+verticaltimeline@gmail.com
+
+  Please email if you have trouble using this.
+  You may have a use-case that differs from
+  what it was originally designed for, and 
+  I can help you adapt it to your use-case.
+*/
+
+.timeline, .timeline-exp, .timeline-ext, 
+.timeline-icon-edu, .timeline-icon-exp, .timeline-icon-ext{
+  background-size: 30px 30px;
+  background-repeat:  no-repeat;
+  background-position: center;
+  margin: 0;
+}
+
+.timeline{
+  border-radius: 500px;
+  border: 1px solid #7860a9; 
+}
+
+.timeline-exp{
+  background-image: url('../img/category-img/work.png');
+  border-radius: 500px;
+  border: 1px solid #5db260; 
+}
+
+.timeline-ext{
+  background-image: url('../img/category-img/extracurricular.png');
+  border-radius: 500px;
+  border: 1px solid #b26060;
+}
+
+/* comparison timeline icons*/
+
+.timeline-icon-edu{
+  background-image: url('../img/category-img/education.png');
+}
+
+.timeline-icon-exp{
+  background-image: url('../img/category-img/work.png');
+}
+
+.timeline-icon-ext{
+  background-image: url('../img/category-img/extracurricular.png');
+}
+
+.match-icon{
+  font-size: 24px;
+  padding-left: 8px;
+  
+}
+
+.timeline-right > .ion-ios-star-outline{
+  color: #ffb600 !important;
+}
+
+.timeline-right h5, .match-icon{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+/* COMKPARISON TIMELINE*/
+
+.timeline-container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #5e85b5;
+  margin-right: 50%;
+  margin-left: 50%;
+  z-index: 1;
+}
+
+.timeline-container{
+  position: relative;
+}
+
+
+
+.timeline-row, .timeline-header-row{
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.timeline-header-row{
+  margin-bottom: 4%;
+  text-align: center;
+}
+
+
+.timeline-row{
+  margin-top: 4%;
+  margin-bottom: 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items : center;
+}
+
+.timeline-left, .timeline-right, .timeline-icon{
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2%;
+}
+
+.timeline-left, .timeline-right{
+  width: 38%;
+}
+
+
+.timeline-icon{
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+  background-color: white;
+}
+
+/*timeline border variations*/
+
+.timeline-border-edu, .timeline-border-exp, .timeline-border-ext{
+  position: relative;
+  background-color: white;
+  z-index: 2;
+
+}
+.timeline-border-edu{
+  border: 1px solid #7860a9;
+}
+
+.timeline-border-exp{
+  border: 1px solid #5db260;
+}
+
+.timeline-border-ext{
+  border: 1px solid #b26060;
+}
+
+
+
+.timeline-title{
+  font-weight: 500;
+  font-size: 3.4vw;
+  margin-bottom: 4%;
+}
+
+.timeline-content{
+  font-size: 12px;
+  font-size: 3vw;
+  margin-bottom: 2%;
+}
+
+.timeline-content-time{
+  font-size: 3.2vw;
+}
+
+hr.cus-line{
+   width: 0px;
+   height: 20px;
+   color: #ceced2;
+   background-color: #ceced2;
+}
+
